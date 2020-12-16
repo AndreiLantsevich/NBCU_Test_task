@@ -1,0 +1,24 @@
+apply plugin: 'java'
+apply plugin: 'idea'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'junit:junit:4.12'
+    compile 'io.rest-assured:rest-assured:4.1.2'
+    compile 'org.json:json:20190722'
+    compile 'com.google.code.gson:gson:2.8.6'
+    compile 'org.apache.logging.log4j:log4j-api:2.13.0'
+    compile 'org.apache.logging.log4j:log4j-core:2.13.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.10.+'
+
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.6.+'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.6.+'
+    testCompile 'org.mockito:mockito-junit-jupiter:3.+'
+}
+
+test {
+    maxParallelForks = Runtime.runtime.availableProcessors().intdiv(2) ?: 1
+}
